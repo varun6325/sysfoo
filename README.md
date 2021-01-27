@@ -1,2 +1,4 @@
-This is a Sample Maven App, used for testing jenkins old and new(ocean view)
+This is a Sample Maven App
+
+Used for testing jenkins, CI, pull requests policies.
 
