@@ -40,6 +40,20 @@ pipeline {
       }
     }
 
+    stage('Docker Build and Package') {
+      steps {
+        script {
+          docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
+            def dockerImage = docker.build("varun6325/sysfoo:v${env.BUILD_ID}", "./")
+            dockerImage.push()
+            dockerImage.push("latest")
+            dockerImage.push("dev")
+          }
+        }
+
+      }
+    }
+
   }
   tools {
     maven 'maven 3.6.3'
