@@ -52,11 +52,21 @@ pipeline {
             dockerImage.push("dev")
           }
         }
-
-
       }
     }
-
+    stage('Deploy To Dev') {
+        when {
+		beforeAgent true
+                branch 'master'
+            }
+	agent any
+      steps {
+        script {
+          echo 'Deploying to Dev Environment with Docker Compose'
+          sh 'docker-compose up -d'
+	}
+      }
+    }
   }
   tools {
     maven 'maven 3.6.3'
