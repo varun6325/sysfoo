@@ -26,7 +26,6 @@ pipeline {
         sh 'mvn test'
       }
     }
-
     stage('package') {
       agent {
         docker {
@@ -50,6 +49,7 @@ pipeline {
             dockerImage.push("dev")
           }
         }
+
 
       }
     }
